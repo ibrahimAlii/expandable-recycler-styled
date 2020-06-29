@@ -1,0 +1,3 @@
+include ':recycler'
+include ':app'
+rootProject.name = "Expandable"
