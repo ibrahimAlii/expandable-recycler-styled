@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity(), OnExpandableClick {
 
 
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = ExpandableAdapter(this, items, this)
+        recyclerView.adapter = ExpandableAdapter(items, this)
 
     }
 

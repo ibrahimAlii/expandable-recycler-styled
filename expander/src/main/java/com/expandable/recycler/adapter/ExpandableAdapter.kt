@@ -1,6 +1,5 @@
 package com.expandable.recycler.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,8 +12,8 @@ import com.expandable.recycler.*
 import com.expandable.recycler.interfaces.OnExpandableClick
 import com.expandable.recycler.model.ExpandableModel
 
-public class ExpandableAdapter constructor(
-    context: Context, val data: List<ExpandableModel>,
+class ExpandableAdapter(
+    val data: List<ExpandableModel>,
     val onExpandableClick: OnExpandableClick
 ) :
     ListAdapter<ExpandableModel, RecyclerView.ViewHolder>(ItemDiffCallback()) {
@@ -207,13 +206,13 @@ public class ExpandableAdapter constructor(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is ItemViewHolder -> {
-                currentData[position]?.let { holder.bind(it) }
+                currentData[position].let { holder.bind(it) }
             }
             is ExpandViewHolder -> {
-                currentData[position - 1]?.let { holder.bind(it) }
+                currentData[position - 1].let { holder.bind(it) }
             }
             is CollapseViewHolder -> {
-                currentData[position - 1]?.let { holder.bind(it) }
+                currentData[position - 1].let { holder.bind(it) }
             }
         }
     }
