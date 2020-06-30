@@ -2,7 +2,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'com.github.dcendents.android-maven'
 
+group='com.expandable.recycler'
 
 android {
     compileSdkVersion 29
@@ -39,5 +41,3 @@ dependencies {
 
 }
 
-apply from: './install.gradle'
-apply from: './bintray.gradle'
