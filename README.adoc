@@ -1,9 +1,31 @@
 = Expander
 
-A library that manage expandeable recycler in easy and beautiful way.
+A library that manage expandeable list in easy and beautiful way.
 
-image::assets/library.gif[]
+== Install:
 
+<<<
+<<<
+
+[source,groovy]
+.build.gradle
+----
+ implementation 'com.expandable.recycler:expander:1.0.0'
+----
+
+<<<
+<<<
+<<<
+<<<
+
+
+== Usage:
+
+Just use the `ExpandableModel` and insert your item data **(You should define the type of the Item [PARENT OR CHILD])**
+
+And then pass the data to the `ExpandableAdapter`
+
+You can listen on `ItemClicked`, `ItemExpand` and `ItemCollapse` by implementing `OnExpandableClick`
 [source,kotlin]
 .Activity.kt
 ----
@@ -32,5 +54,8 @@ recyclerView.adapter = ExpandableAdapter(items, this)
 ----
 
 
+<<<
+<<<
+<<<
 
-
+image::assets/library.gif[]
