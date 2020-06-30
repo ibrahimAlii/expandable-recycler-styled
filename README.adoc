@@ -10,7 +10,7 @@ A library that manage expandeable list in easy and beautiful way.
 [source,groovy]
 .build.gradle
 ----
- implementation 'com.expandable.recycler:expander:1.0.0'
+ implementation 'com.expandable.recycler:expander:1.0.1'
 ----
 
 <<<
