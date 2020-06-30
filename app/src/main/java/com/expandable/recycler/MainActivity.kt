@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity(), OnExpandableClick {
         items.add(ExpandableModel(16, "Fun", PARENT))
         items.add(ExpandableModel(17, "Football", CHILD))
         items.add(ExpandableModel(18, "Basket", CHILD))
+        items.add(ExpandableModel(122, "123", CHILD))
         items.add(ExpandableModel(19, "Fill", PARENT))
         items.add(ExpandableModel(20, "STY", PARENT))
 

@@ -38,7 +38,7 @@ public class ExpandableAdapter constructor(
                 else break
             }
 
-            if (count >= 3) {
+            if (count > 3) {
                 for (d in data.subList(i, i + 3))
                     currentData.add(data[i++])
 

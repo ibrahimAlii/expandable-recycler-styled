@@ -1,0 +1,8 @@
+= Expander
+
+A library that manage expandeable recycler in easy and beautiful way.
+
+image::assets/library.gif[]
+
+
+
