@@ -1,5 +1,6 @@
 package com.expandable.recycler
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity(), OnExpandableClick {
         items.add(ExpandableModel(5, "TTT", CHILD))
         items.add(ExpandableModel(6, "TTT", CHILD))
         items.add(ExpandableModel(6, "vvvv", CHILD))
-        items.add(ExpandableModel(11, "Politics", PARENT))
+        items.add(ExpandableModel(11,"Politics", PARENT))
         items.add(ExpandableModel(12, "Pol", CHILD))
         items.add(ExpandableModel(13, "it", CHILD))
         items.add(ExpandableModel(14, "ic", CHILD))
@@ -40,7 +41,11 @@ class MainActivity : AppCompatActivity(), OnExpandableClick {
 
 
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = ExpandableAdapter(items, this)
+        val adapter = ExpandableAdapter(items, this)
+        adapter.setParentTextColor(Color.BLUE)
+        recyclerView.adapter = adapter
+
+
 
     }
 

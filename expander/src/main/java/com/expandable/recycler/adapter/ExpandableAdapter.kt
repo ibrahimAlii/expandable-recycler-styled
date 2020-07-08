@@ -20,12 +20,23 @@ class ExpandableAdapter(
 
 
     private var currentData = ArrayList<ExpandableModel>()
+    private var parentTextColor = 0
+    private var childTextColor = 0
+    private var parentDividerColor = 0
+    private var childDividerColor = 0
+    private var childDividerVisibility = View.GONE
+    private var parentDividerVisibility = 0
+    private var parentTextSize = 0F
+    private var childTextSize = 0F
 
     init {
         currentData = generalizingData(data)
     }
 
-    private fun generalizingData(data: List<ExpandableModel>, index: Int = 0): ArrayList<ExpandableModel> {
+    private fun generalizingData(
+        data: List<ExpandableModel>,
+        index: Int = 0
+    ): ArrayList<ExpandableModel> {
         var i = 0
         while (i < data.size) {
             var count = 0
@@ -105,12 +116,67 @@ class ExpandableAdapter(
 
     }
 
-    inner class ItemViewHolder(view: View) :
+
+    inner class ParentItemViewHolder(view: View) :
         RecyclerView.ViewHolder(view) {
         private var text: TextView? = null
+        private var divider: View? = null
 
         init {
             text = view.findViewById(R.id.title)
+            divider = view.findViewById(R.id.view)
+
+            if (parentTextColor != 0) {
+                text!!.setTextColor(parentTextColor)
+            }
+
+            if (parentDividerColor != 0) {
+                divider!!.setBackgroundColor(parentDividerColor)
+            }
+
+            if (parentDividerVisibility != -1) {
+                divider!!.visibility = parentDividerVisibility
+            }
+
+            if (parentTextSize != 0F) {
+                text!!.textSize = parentTextSize
+            }
+        }
+
+        fun bind(item: ExpandableModel) {
+            text!!.text = item.title
+            text!!.setOnClickListener {
+                onExpandableClick.onItemClicked(item, adapterPosition)
+
+            }
+        }
+    }
+
+
+    inner class ItemViewHolder(view: View) :
+        RecyclerView.ViewHolder(view) {
+        private var text: TextView? = null
+        private var divider: View? = null
+
+        init {
+            text = view.findViewById(R.id.title)
+            divider = view.findViewById(R.id.view)
+
+            if (childTextColor != 0) {
+                text!!.setTextColor(childTextColor)
+            }
+
+            if (childDividerColor != 0) {
+                divider!!.setBackgroundColor(childDividerColor)
+            }
+
+            if (childDividerVisibility != -1) {
+                divider!!.visibility = childDividerVisibility
+            }
+
+            if (childTextSize != 0F) {
+                text!!.textSize = childTextSize
+            }
         }
 
         fun bind(item: ExpandableModel) {
@@ -163,7 +229,7 @@ class ExpandableAdapter(
         when (viewType) {
             PARENT -> {
 
-                return ItemViewHolder(
+                return ParentItemViewHolder(
                     LayoutInflater.from(parent.context)
                         .inflate(R.layout.list_item_parent, parent, false)
                 )
@@ -205,6 +271,9 @@ class ExpandableAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
+            is ParentItemViewHolder -> {
+                currentData[position].let { holder.bind(it) }
+            }
             is ItemViewHolder -> {
                 currentData[position].let { holder.bind(it) }
             }
@@ -218,6 +287,39 @@ class ExpandableAdapter(
     }
 
 
+
+
+    fun setParentTextColor(color: Int) {
+        parentTextColor = color
+    }
+
+    fun setChildTextColor(color: Int) {
+        childTextColor = color
+    }
+
+    fun setParentDividerColor(color: Int) {
+        parentDividerColor = color
+    }
+
+    fun setChildDividerColor(color: Int) {
+        childDividerColor = color
+    }
+
+    fun setParentDividerVisibility(visibility: Int) {
+        parentDividerVisibility = visibility
+    }
+
+    fun setChildDividerVisibility(visibility: Int) {
+        childDividerVisibility = visibility
+    }
+
+    fun setParentTextSize(size: Float) {
+        parentTextSize = size
+    }
+
+    fun setChildTextSize(size: Float) {
+        childTextSize = size
+    }
 }
 
 private class ItemDiffCallback : DiffUtil.ItemCallback<ExpandableModel>() {

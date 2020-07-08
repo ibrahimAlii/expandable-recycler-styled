@@ -60,8 +60,8 @@ artifacts {
     archives sourcesJar
 }
 
-group = 'northpole.nick.android'
-version = '0.1.1'
+group = 'com.expandable.recycler'
+version = '1.0.2'
 
 install {
     repositories.mavenInstaller {
@@ -74,7 +74,7 @@ install {
             packaging 'aar'
             groupId 'com.expandable.recycler'
             artifactId 'expander'
-            version '1.0.0'
+            version '1.0.2'
 
             licenses {
                 license {
@@ -105,17 +105,17 @@ bintray {
     key = bintrayProperties.get('key')
     configurations = ['archives']
     pkg {
-        repo = 'android'
+        repo = 'Expander'
         name = 'expander'
         userOrg = 'ibrahimali'
         licenses = ['MIT']
         vcsUrl = 'https://github.com/ibrahimAlii/expandable-recycler-styled.git'
         publish = true
         version {
-            name = '1.0.0'
+            name = '1.0.2'
             desc = 'An android library help you manage expandables in easy and beautifule way.'
             released = new Date()
-            vcsTag = 'v1.0.0'
+            vcsTag = 'v1.0.2'
         }
     }
 }
