@@ -1,5 +1,6 @@
 package com.expandable.recycler.adapter
 
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,14 +29,14 @@ class ExpandableAdapter(
     private var parentDividerVisibility = 0
     private var parentTextSize = 0F
     private var childTextSize = 0F
+    private var textAppearance = 0
 
     init {
         currentData = generalizingData(data)
     }
 
     private fun generalizingData(
-        data: List<ExpandableModel>,
-        index: Int = 0
+        data: List<ExpandableModel>
     ): ArrayList<ExpandableModel> {
         var i = 0
         while (i < data.size) {
@@ -141,6 +142,14 @@ class ExpandableAdapter(
             if (parentTextSize != 0F) {
                 text!!.textSize = parentTextSize
             }
+
+            if (textAppearance != 0) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    text!!.setTextAppearance(textAppearance)
+                }else {
+                    text!!.setTextAppearance(view.context, textAppearance)
+                }
+            }
         }
 
         fun bind(item: ExpandableModel) {
@@ -177,6 +186,15 @@ class ExpandableAdapter(
             if (childTextSize != 0F) {
                 text!!.textSize = childTextSize
             }
+
+            if (textAppearance != 0) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    text!!.setTextAppearance(textAppearance)
+                }else {
+                    text!!.setTextAppearance(view.context, textAppearance)
+                }
+            }
+
         }
 
         fun bind(item: ExpandableModel) {
@@ -319,6 +337,10 @@ class ExpandableAdapter(
 
     fun setChildTextSize(size: Float) {
         childTextSize = size
+    }
+
+    fun setTextAppearance(textAppearance: Int) {
+        this.textAppearance = textAppearance
     }
 }
 
