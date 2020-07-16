@@ -1,0 +1,39 @@
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = 'com.expandable.recycler'
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                groupId 'com.expandable.recycler'
+                artifactId 'expandable'
+                name 'Expandable Recycler Styled'
+                description 'An android library help you manage expandables in easy and beautifule way.'
+                url 'https://github.com/ibrahimAlii/Expandable-Recyler-Styled'
+
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'ibrahimAlii'
+                        name 'Ibrahim Ali'
+                        email 'ibrahim.a.eladl@gmail.com'
+                    }
+                }
+
+                scm {
+                    connection 'git@github.com:ibrahimAlii/Expandable-Recyler-Styled.git'
+                    developerConnection 'git@github.com:ibrahimAlii/Expandable-Recyler-Styled.git'
+                    url 'https://github.com/ibrahimAlii/Expandable-Recyler-Styled'
+                }
+            }
+        }
+    }
+}

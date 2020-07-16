@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.ListAdapter
 import android.widget.TextView
+import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.expandable.recycler.*
@@ -153,7 +154,7 @@ class ExpandableAdapter(
         }
 
         fun bind(item: ExpandableModel) {
-            text!!.text = item.title
+            text!!.text = HtmlCompat.fromHtml(item.title, HtmlCompat.FROM_HTML_MODE_COMPACT)
             text!!.setOnClickListener {
                 onExpandableClick.onItemClicked(item, adapterPosition)
 
@@ -198,7 +199,7 @@ class ExpandableAdapter(
         }
 
         fun bind(item: ExpandableModel) {
-            text!!.text = item.title
+            text!!.text = HtmlCompat.fromHtml(item.title, HtmlCompat.FROM_HTML_MODE_COMPACT)
             text!!.setOnClickListener {
                 onExpandableClick.onItemClicked(item, adapterPosition)
 
