@@ -6,5 +6,6 @@ data class ExpandableModel(
     val id: Int = 0,
     val title: String = "",
     val type: Int = PARENT,
-    val url: String = ""
+    val url: String = "",
+    val customObj: Any? = null
 )
